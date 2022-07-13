@@ -12,10 +12,11 @@
 
 
 
-/* to use this program, run this with the following format:
+/* To use this, run this program and call it with the following format:
 
 	regress_rpCIs_2predictors outcomevariable firstpredictorvariable secondpredictorvariable
 	
+	example: regress_rpCIs_2predictors DV IV1 IV2
 */ 
 
 program regress_rpCIs_2predictors
