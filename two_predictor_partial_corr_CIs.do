@@ -6,7 +6,7 @@
 *******************************************
 * Program to run to calculate the         *
 * partial correlation coefficients        *
-* and 95% CIs for individal predictors    *
+* and 95% CIs for individual predictors   *
 * in a 2-predictor linear regression      *
 ******************************************/
 
