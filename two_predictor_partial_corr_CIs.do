@@ -14,7 +14,7 @@
 
 /* to use this program, run this with the following format:
 
-    gen fullsample = 0 //  you need to create this variable first, so that the replace can work in the program
+    gen fullsample = . //  you need to create this variable first, so that the replace can work in the program
 	regress_rpCIs_2predictors outcomevariable firstpredictorvariable secondpredictorvariable
 	
 */ 
