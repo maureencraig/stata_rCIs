@@ -2,7 +2,7 @@
 * Partial rs & confidence intervals       *
 * for 2 predictor regression effect sizes *
 * Maureen Craig                           *
-* Last updated: 8/3/2022                 *
+* Last updated: 8/4/2022                 *
 *******************************************
 * Program to run to calculate the         *
 * partial correlation coefficients        *
@@ -12,27 +12,27 @@
 
 
 
-/* to use this program, run this with the following format:
+/* to use this program, run this program and call it with the following format:
 
-    gen fullsample = . //  you need to create this variable first, so that the replace can work in the program
 	regress_rpCIs_2predictors outcomevariable firstpredictorvariable secondpredictorvariable
 	
 */ 
 
 program regress_rpCIs_2predictors
 args outcome pred1 pred2
+tempvar fullsample
 regress `outcome' `pred1' `pred2'
 quietly{
-	matrix Full_Bs = e(b)
-	replace fullsample = e(sample) /* ensure that the models w/ fewer parameters use the same observations */
-scalar samplesize = e(N)
-scalar pred1_b = Full_Bs[1,1]
-scalar pred2_b = Full_Bs[1,2]
+  matrix Full_Bs = e(b)
+  gen `fullsample' = e(sample) /* ensure that the models w/ fewer parameters use the same observations */
+  scalar samplesize = e(N)
+  scalar pred1_b = Full_Bs[1,1]
+  scalar pred2_b = Full_Bs[1,2]
 //semi-partial & partial correlation coefficients 
   scalar r2FULL = e(r2)
-regress `outcome' `pred2' if(fullsample)
+regress `outcome' `pred2' if(`fullsample')
   scalar r2noP1 = e(r2)
-regress `outcome' `pred1' if(fullsample)
+regress `outcome' `pred1' if(`fullsample')
   scalar r2noP2 = e(r2)
 scalar r2changeP1 = r2FULL - r2noP1
 scalar r2changeP2 = r2FULL - r2noP2
