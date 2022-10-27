@@ -17,7 +17,7 @@
 
 	regress_rp_CIs outcome_variable variable_of_interest covariate1 covariate2 covariate3...
 	
-	list regression model as the arugments with the outcome first, followed by
+	list regression model as the arguments with the outcome first, followed by
 	the predictor of interest and any covariates afterwards.
 	This program can handle up to 12 variables, but you can adjust line 44 as needed, 
 	if your model requires more variables. Don't use indicator notation (i.) as that will 
